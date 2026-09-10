@@ -18,7 +18,7 @@
       "ai/serving.py": "7322b6a5435652e1ead82c5f5ef06afafe77fa69792964bd525e647898ea2420",
       "knowledge/passages.json": "0bc8d13b04331aa8b86163e08816076fea3ff780089af408ff95c8059ea465bc",
       "web/app/language-notice.tsx": "c85addb8271404c057f659511f89dd977d0a1ad4993a5cb869a916585e7a09a8",
-      "backend/app.py": "16c53f656f195ab65da971abdeb3aecdb8f693510a9ac8b7e22cd628d667c8ee",
+      "backend/app.py": "adde6cec4d5bc320b87ca90f322a358f99ae0f9a734f5c37cdb6334f27d0e27c",
       "backend/admission.py": "01d78563c4f082594bb0062a4c48fdcd6a4f01c790fd4f7555008634b21b923e",
       "adapter_config.json": "7e37b2cfafa55d7b414e3ad38c2a58c585882a188ec2e7b509433cc7fce4e5f8"
     },

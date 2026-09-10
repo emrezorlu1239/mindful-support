@@ -179,6 +179,13 @@ fastapi_app = create_app(
     ai_runtime=_lazy_runtime,
 )
 
+@fastapi_app.get("/healthz")
+@fastapi_app.get("/health")
+@fastapi_app.get("/ready")
+def _hf_health_probe():
+    return {"status": "ok"}
+
+
 # ---------------------------------------------------------------------------
 # Gradio GPU shim — model is loaded here, inside the @spaces.GPU boundary.
 # ---------------------------------------------------------------------------
