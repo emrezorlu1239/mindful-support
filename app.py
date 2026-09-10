@@ -19,6 +19,7 @@ os.environ.setdefault("MINDFUL_ENABLE_AI", "1")
 os.environ.setdefault("MINDFUL_DB_PATH", str(ROOT / "data" / "appointments.sqlite"))
 os.environ["HF_HOME"] = str(ROOT / "models" / "hf")
 os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
+os.environ["GRADIO_SSR_MODE"] = "False"
 
 # On ZeroGPU the spaces package patches torch.cuda.is_available() globally.
 # Import it before any torch-using module so the patch is in place.
@@ -232,7 +233,7 @@ _gradio_blocks.queue()
 demo = _gradio_blocks
 
 # Mount Gradio under /api/gpu (matches chat-transport.ts expectation).
-app = gr.mount_gradio_app(fastapi_app, _gradio_blocks, path="/api/gpu")
+app = gr.mount_gradio_app(fastapi_app, _gradio_blocks, path="/api/gpu", ssr_mode=False)
 
 # Serve the pre-built static frontend.
 _static_dir = ROOT / "web" / "dist" / "client"
