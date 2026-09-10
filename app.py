@@ -6,7 +6,16 @@ and conversation content remain in the FastAPI layer.
 """
 import os
 import sys
-import threading
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+
+# Set cache and environment variables before importing spaces, huggingface_hub, or transformers
+os.environ.setdefault("MINDFUL_ENABLE_AI", "1")
+os.environ.setdefault("MINDFUL_DB_PATH", str(ROOT / "data" / "appointments.sqlite"))
+os.environ["HF_HOME"] = str(ROOT / "models" / "hf")
+os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 
 # On ZeroGPU the spaces package patches torch.cuda.is_available() globally.
 # Import it before any torch-using module so the patch is in place.
@@ -16,21 +25,13 @@ try:
 except ImportError:
     _zerogpu = False
 
-from pathlib import Path
-ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT))
-
+import threading
 import gradio as gr
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 
 from backend.app import create_app, COOKIE
 from backend.gpu_tickets import GPUTickets
-
-os.environ.setdefault("MINDFUL_ENABLE_AI", "1")
-os.environ.setdefault("MINDFUL_DB_PATH", str(ROOT / "data" / "appointments.sqlite"))
-os.environ["HF_HOME"] = str(ROOT / "models" / "hf")
-os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 
 PUBLIC_ORIGIN = os.environ.get("SPACE_HOST")
 if PUBLIC_ORIGIN and not PUBLIC_ORIGIN.startswith("https://"):
@@ -49,10 +50,13 @@ def _prepare_space():
 
     hub_dir = ROOT / "models" / "hf" / "hub"
     hub_dir.mkdir(parents=True, exist_ok=True)
+    default_hub = Path.home() / ".cache" / "huggingface" / "hub"
+    default_hub.mkdir(parents=True, exist_ok=True)
 
     # 1. Pinned embedding model
     e5_rev = LOCK[EMBED_MODEL]["revision"]
-    e5_snapshot = hub_dir / ("models--" + EMBED_MODEL.replace("/", "--")) / "snapshots" / e5_rev
+    e5_repo_dir = "models--" + EMBED_MODEL.replace("/", "--")
+    e5_snapshot = hub_dir / e5_repo_dir / "snapshots" / e5_rev
     if not e5_snapshot.exists():
         print(f"[Startup] Downloading embedding model {EMBED_MODEL}...", flush=True)
         e5_path = snapshot_download(
@@ -67,6 +71,12 @@ def _prepare_space():
                 os.symlink(e5_path, e5_snapshot)
             except OSError:
                 shutil.copytree(e5_path, e5_snapshot)
+        # Mirror to default hub location in case transformers checks ~/.cache
+        if not (default_hub / e5_repo_dir).exists():
+            try:
+                os.symlink(hub_dir / e5_repo_dir, default_hub / e5_repo_dir)
+            except OSError:
+                shutil.copytree(hub_dir / e5_repo_dir, default_hub / e5_repo_dir)
 
     # 2. Vector knowledge database
     index_path = ROOT / "data" / "knowledge.sqlite"
