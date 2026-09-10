@@ -41,19 +41,32 @@ gpu_tickets = GPUTickets()
 def _prepare_space():
     """Ensure pinned models and knowledge index are present at startup."""
     import json
+    import os
+    import shutil
+    from pathlib import Path
     from huggingface_hub import snapshot_download
     from ai.config import EMBED_MODEL, LOCK
 
+    hub_dir = ROOT / "models" / "hf" / "hub"
+    hub_dir.mkdir(parents=True, exist_ok=True)
+
     # 1. Pinned embedding model
     e5_rev = LOCK[EMBED_MODEL]["revision"]
-    e5_snapshot = ROOT / "models" / "hf" / "hub" / ("models--" + EMBED_MODEL.replace("/", "--")) / "snapshots" / e5_rev
+    e5_snapshot = hub_dir / ("models--" + EMBED_MODEL.replace("/", "--")) / "snapshots" / e5_rev
     if not e5_snapshot.exists():
         print(f"[Startup] Downloading embedding model {EMBED_MODEL}...", flush=True)
-        snapshot_download(
+        e5_path = snapshot_download(
             EMBED_MODEL,
             revision=e5_rev,
+            cache_dir=str(hub_dir),
             max_workers=3,
         )
+        if not e5_snapshot.exists() and Path(e5_path).exists():
+            e5_snapshot.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                os.symlink(e5_path, e5_snapshot)
+            except OSError:
+                shutil.copytree(e5_path, e5_snapshot)
 
     # 2. Vector knowledge database
     index_path = ROOT / "data" / "knowledge.sqlite"
@@ -66,17 +79,24 @@ def _prepare_space():
     spec = json.loads((ROOT / "ai" / "serving.json").read_text(encoding="utf-8"))
     candidates = json.loads((ROOT / "ai" / "candidates.json").read_text(encoding="utf-8"))
     cand_entry = candidates[spec["model"]]
-    model_snapshot = ROOT / "models" / "hf" / "hub" / ("models--" + spec["model"].replace("/", "--")) / "snapshots" / cand_entry["revision"]
+    model_snapshot = hub_dir / ("models--" + spec["model"].replace("/", "--")) / "snapshots" / cand_entry["revision"]
     if not model_snapshot.exists():
         print(f"[Startup] Downloading candidate model {spec['model']}...", flush=True)
         from ai.candidate_download import validate_snapshot
         path = snapshot_download(
             spec["model"],
             revision=cand_entry["revision"],
+            cache_dir=str(hub_dir),
             max_workers=3,
             allow_patterns=["*.safetensors", "*.json", "*.jinja", "vocab.*", "merges.txt", "LICENSE", "README.md"],
         )
-        validate_snapshot(path, cand_entry)
+        if not model_snapshot.exists() and Path(path).exists():
+            model_snapshot.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                os.symlink(path, model_snapshot)
+            except OSError:
+                shutil.copytree(path, model_snapshot)
+        validate_snapshot(model_snapshot, cand_entry)
         print("[Startup] Model download and validation complete.", flush=True)
 
 if os.environ.get("MINDFUL_ENABLE_AI") == "1":
