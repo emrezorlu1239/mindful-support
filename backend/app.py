@@ -71,7 +71,7 @@ def create_app(db_path=None, now=time.time, capacity=None, queue_limit=32, ai_ru
         if parsed.scheme != 'https' or not parsed.hostname or parsed.path or parsed.query or parsed.fragment or parsed.username:
             raise ValueError('A fixed HTTPS origin is required.')
         origins = {public_origin}
-        hosts = [parsed.hostname]
+        hosts = [parsed.hostname, "localhost", "127.0.0.1", "testserver"]
     if ai_runtime is None and os.environ.get("MINDFUL_ENABLE_AI") == "1":
         from ai.runtime import load_approved_runtime
         ai_runtime = load_approved_runtime()
