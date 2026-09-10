@@ -10,7 +10,7 @@
       "ai/config.py": "5509d5938e130d31f38035f34e593f3f7af6009c9edcb791e2a1f3b7881086e3",
       "ai/model.py": "acd9dab6356a331f246b245e3898604e9e38fcaba36a56e82f758269b2a5f792",
       "ai/candidate_model.py": "e7ab9b0ba4b08c2f4c802326b3d252bb4c6d54bb9b09ae5bdd7b140e4c5e647d",
-      "ai/candidate_download.py": "08be0fae9069bfb0cae384d8572fe14827b273b837a3bfe1ee7008c47c87cbce",
+      "ai/candidate_download.py": "ce2f64edb97632dda3990921d54ff3b7974f156e622b24d916dd0e2d3ecc1d41",
       "ai/pipeline.py": "f499452e0d74023b82b9d54e8633f47d45f57faa3008e94a1e6efe6f951155fe",
       "ai/retrieval.py": "7082632cf9ec5547cb93c115448fe09c3a04ef328a54cbfbab77d541051c128f",
       "ai/language.py": "8c05fef9ff875b9956903fc3865bde37331cefcb79b884e852c9cb4d3781bbb6",

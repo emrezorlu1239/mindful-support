@@ -23,7 +23,10 @@ def validate_snapshot(path, entry, verify_hashes=True):
             raise ValueError("Candidate checkpoint is incomplete")
         if verify_hashes:
             with weight.open("rb") as src:
-                if hashlib.file_digest(src,"sha256").hexdigest()!=item["sha256"]:
+                h = hashlib.sha256()
+                while chunk := src.read(1024 * 1024):
+                    h.update(chunk)
+                if h.hexdigest() != item["sha256"]:
                     raise ValueError("Candidate weight hash mismatch")
     return path
 
