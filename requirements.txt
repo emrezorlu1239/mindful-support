@@ -6,7 +6,7 @@ accelerate==1.14.0
 bitsandbytes==0.50.2
 tokenizers==0.23.2
 safetensors==0.8.0
-numpy==2.4.6
+numpy==2.2.6
 fastapi==0.141.1
 starlette==1.6.0
 httpx==0.28.1
