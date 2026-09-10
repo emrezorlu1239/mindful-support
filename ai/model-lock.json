@@ -1,0 +1,10 @@
+{
+  "Qwen/Qwen3-1.7B": {
+    "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "license": "apache-2.0"
+  },
+  "intfloat/multilingual-e5-small": {
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "license": "mit"
+  }
+}

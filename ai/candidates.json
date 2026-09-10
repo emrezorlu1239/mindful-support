@@ -1,0 +1,103 @@
+{
+  "Qwen/Qwen3.5-2B": {
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "license": "apache-2.0",
+    "architecture": [
+      "Qwen3_5ForConditionalGeneration"
+    ],
+    "model_type": "qwen3_5",
+    "weights": [
+      {
+        "name": "model.safetensors-00001-of-00001.safetensors",
+        "size": 4548221488,
+        "sha256": "aa33250c4fc64891ddfaba3a314fd9542ea371843c387178b425fbcc5ed680b1"
+      }
+    ],
+    "weight_bytes": 4548221488
+  },
+  "Qwen/Qwen3.5-4B": {
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "license": "apache-2.0",
+    "architecture": [
+      "Qwen3_5ForConditionalGeneration"
+    ],
+    "model_type": "qwen3_5",
+    "weights": [
+      {
+        "name": "model.safetensors-00001-of-00002.safetensors",
+        "size": 5329398688,
+        "sha256": "26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61"
+      },
+      {
+        "name": "model.safetensors-00002-of-00002.safetensors",
+        "size": 3990429408,
+        "sha256": "cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188"
+      }
+    ],
+    "weight_bytes": 9319828096
+  },
+  "Qwen/Qwen3-4B-Instruct-2507": {
+    "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "license": "apache-2.0",
+    "architecture": [
+      "Qwen3ForCausalLM"
+    ],
+    "model_type": "qwen3",
+    "weights": [
+      {
+        "name": "model-00001-of-00003.safetensors",
+        "size": 3957900840,
+        "sha256": "75311d91bb08cf0b882913da464a1e722a31fb44db35208663487efb7a3d8ed6"
+      },
+      {
+        "name": "model-00002-of-00003.safetensors",
+        "size": 3987450520,
+        "sha256": "0b48adbb1f60e901153d91907ba11ce63bd4b8b584482e730f48808d055dfba1"
+      },
+      {
+        "name": "model-00003-of-00003.safetensors",
+        "size": 99630640,
+        "sha256": "7dd39ccca5e4de123c74c14af44c9bf2eb75df33b4614382af0134528e060d5d"
+      }
+    ],
+    "weight_bytes": 8044982000
+  },
+  "unsloth/Qwen3-4B-Instruct-2507-bnb-4bit": {
+    "revision": "f12db89cd5156e090618dded9b4367f23f8f3b33",
+    "license": "apache-2.0",
+    "base_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "distributor": "Unsloth, third-party quantization of the Qwen model",
+    "prequantized": true,
+    "architecture": [
+      "Qwen3ForCausalLM"
+    ],
+    "model_type": "qwen3",
+    "weights": [
+      {
+        "name": "model.safetensors",
+        "size": 2653133894,
+        "sha256": "f632ab95da1d8f307237094aca7c7dfa9e416b6d2f87bdd8ecda6dadfedb204d"
+      }
+    ],
+    "weight_bytes": 2653133894
+  },
+  "techwithsergiu/Qwen3.5-text-4B-bnb-4bit": {
+    "revision": "70db06548a71a853f12fc10b63d8c0961642ed74",
+    "license": "apache-2.0",
+    "base_model": "Qwen/Qwen3.5-4B",
+    "distributor": "techwithsergiu, third-party text-only NF4 derivative",
+    "prequantized": true,
+    "architecture": [
+      "Qwen3_5ForCausalLM"
+    ],
+    "model_type": "qwen3_5_text",
+    "weights": [
+      {
+        "name": "model.safetensors",
+        "size": 3115043601,
+        "sha256": "3c0e082991e738d3f3dc0f048d48b40588280e2d6d9dae3e893bf9366979e814"
+      }
+    ],
+    "weight_bytes": 3115043601
+  }
+}

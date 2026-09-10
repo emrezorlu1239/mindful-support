@@ -1,0 +1,33 @@
+{
+  "scope": "Actual loopback HTTP with real NF4+QLoRA model and synthetic input; no public deployment",
+  "model": "techwithsergiu/Qwen3.5-text-4B-bnb-4bit",
+  "revision": "70db06548a71a853f12fc10b63d8c0961642ed74",
+  "adapter_sha256": "a83372b328469288983a9403f075e85b6ab37e110cd440758d451938367d7000",
+  "passed": true,
+  "english_response_seconds": 12.186999999999898,
+  "english_reply": {
+    "reply": "It sounds like moving has made coming back harder than expected. Silence might feel heavy in this new place. If you want, tell me what you need right now.",
+    "sources": [],
+    "palette": "sage",
+    "route": "support",
+    "fallback": false
+  },
+  "turkish_reply": {
+    "reply": "Tamam, görüşmeyi burada sonlandırıyoruz.",
+    "sources": [],
+    "palette": "warm",
+    "route": "support",
+    "fallback": false
+  },
+  "checks": [
+    "real model readiness",
+    "FIFO waiting count",
+    "active-session authorization",
+    "owner history isolation",
+    "idempotent retry without a duplicate turn",
+    "queue promotion after leave",
+    "session memory removal",
+    "synthetic conversation absent from the appointment database"
+  ],
+  "approved_for_publication": false
+}

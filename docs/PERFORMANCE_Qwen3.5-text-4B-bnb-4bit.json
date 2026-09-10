@@ -1,0 +1,136 @@
+{
+  "model": "techwithsergiu/Qwen3.5-text-4B-bnb-4bit",
+  "revision": "70db06548a71a853f12fc10b63d8c0961642ed74",
+  "adapter_sha256": "a83372b328469288983a9403f075e85b6ab37e110cd440758d451938367d7000",
+  "scope": "Local RTX laptop; synthetic single-worker measurements, not hosted throughput or clinical validation",
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "device_total_mb": 8123.4375,
+  "load_seconds": 3.2959999999998217,
+  "weight_bytes": 3115043601,
+  "adapter_bytes": 37066596,
+  "sampled_peak_process_rss_mb": 3689.0078125,
+  "peak_cuda_allocated_mb": 4527.4072265625,
+  "peak_cuda_reserved_mb": 4870.0,
+  "median_checked_reply_seconds": 8.601499999999987,
+  "max_checked_reply_seconds": 11.967999999999847,
+  "checked_reply_count": 12,
+  "session_memory_cleared": true,
+  "concurrency": 1,
+  "maximum_generation_stress": {
+    "prompt_tokens": 2800,
+    "generated_tokens": 384,
+    "seconds": 35.391000000000076,
+    "includes_review": false
+  },
+  "rows": [
+    {
+      "session": 0,
+      "language": "en",
+      "seconds": 10.016000000000076,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3252.0
+    },
+    {
+      "session": 0,
+      "language": "en",
+      "seconds": 8.063000000000102,
+      "fallback": false,
+      "route": "out_of_scope",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3252.0
+    },
+    {
+      "session": 0,
+      "language": "en",
+      "seconds": 7.655999999999949,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3276.0
+    },
+    {
+      "session": 0,
+      "language": "en",
+      "seconds": 7.2970000000000255,
+      "fallback": false,
+      "route": "out_of_scope",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3276.0
+    },
+    {
+      "session": 1,
+      "language": "tr",
+      "seconds": 11.967999999999847,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3276.0
+    },
+    {
+      "session": 1,
+      "language": "tr",
+      "seconds": 9.985000000000127,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3276.0
+    },
+    {
+      "session": 1,
+      "language": "tr",
+      "seconds": 10.797000000000025,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3276.0
+    },
+    {
+      "session": 1,
+      "language": "tr",
+      "seconds": 7.75,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3322.0
+    },
+    {
+      "session": 2,
+      "language": "en",
+      "seconds": 8.047000000000025,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3322.0
+    },
+    {
+      "session": 2,
+      "language": "en",
+      "seconds": 8.452999999999975,
+      "fallback": false,
+      "route": "out_of_scope",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3322.0
+    },
+    {
+      "session": 2,
+      "language": "en",
+      "seconds": 9.125,
+      "fallback": false,
+      "route": "support",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3322.0
+    },
+    {
+      "session": 2,
+      "language": "en",
+      "seconds": 8.75,
+      "fallback": false,
+      "route": "out_of_scope",
+      "idle_cuda_allocated_mb": 2995.185546875,
+      "idle_cuda_reserved_mb": 3322.0
+    }
+  ],
+  "approved": false
+}

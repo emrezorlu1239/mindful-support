@@ -1,0 +1,8 @@
+{
+  "model": "techwithsergiu/Qwen3.5-text-4B-bnb-4bit",
+  "adapter_directory": "models/experiments/Qwen3.5-text-4B-bnb-4bit/adapter",
+  "evaluation_receipt": "docs/SERVING_APPROVAL.json",
+  "supported_languages": ["en", "tr"],
+  "turkish_notice": "strong",
+  "concurrent_generations": 1
+}

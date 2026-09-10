@@ -1,0 +1,128 @@
+{
+  "passages": 13,
+  "evaluations": [
+    {
+      "query": "Uyumadan önce telefonuma bakıyorum, uyku düzenimi nasıl destekleyebilirim?",
+      "expected": "care-3",
+      "ids": [
+        "care-3",
+        "care-4",
+        "care-8"
+      ],
+      "scores": [
+        0.8399386405944824,
+        0.8194933533668518,
+        0.8125478029251099
+      ],
+      "hit": true
+    },
+    {
+      "query": "I cannot stop scrolling before bed. How can I support my sleep routine?",
+      "expected": "care-3",
+      "ids": [
+        "care-3",
+        "care-4",
+        "care-8"
+      ],
+      "scores": [
+        0.8979166746139526,
+        0.8714877963066101,
+        0.8695237636566162
+      ],
+      "hit": true
+    },
+    {
+      "query": "Kendimi yalnız hissediyorum ve yakınlarımla konuşmak istiyorum.",
+      "expected": "care-8",
+      "ids": [
+        "care-8",
+        "stress-4",
+        "care-7"
+      ],
+      "scores": [
+        0.8493738770484924,
+        0.817055881023407,
+        0.8079444169998169
+      ],
+      "hit": true
+    },
+    {
+      "query": "I feel lonely and want to connect with friends who support me.",
+      "expected": "care-8",
+      "ids": [
+        "care-8",
+        "stress-4",
+        "care-4"
+      ],
+      "scores": [
+        0.867560625076294,
+        0.8345494270324707,
+        0.8220061659812927
+      ],
+      "hit": true
+    },
+    {
+      "query": "Günlük tutmak stresimi anlamama yardımcı olabilir mi?",
+      "expected": "stress-2",
+      "ids": [
+        "stress-1",
+        "stress-2",
+        "care-1"
+      ],
+      "scores": [
+        0.8131774663925171,
+        0.8131650686264038,
+        0.8056662082672119
+      ],
+      "hit": true
+    },
+    {
+      "query": "Can keeping a journal help me understand stress?",
+      "expected": "stress-2",
+      "ids": [
+        "stress-2",
+        "stress-1",
+        "care-4"
+      ],
+      "scores": [
+        0.8622710704803467,
+        0.8408043384552002,
+        0.8386460542678833
+      ],
+      "hit": true
+    },
+    {
+      "query": "Çok fazla işim var, öncelik belirlemeyi nasıl deneyebilirim?",
+      "expected": "care-5",
+      "ids": [
+        "care-5",
+        "care-8",
+        "care-7"
+      ],
+      "scores": [
+        0.8346143960952759,
+        0.7916500568389893,
+        0.7913422584533691
+      ],
+      "hit": true
+    },
+    {
+      "query": "How can I set priorities when I have too many tasks?",
+      "expected": "care-5",
+      "ids": [
+        "care-5",
+        "care-4",
+        "care-3"
+      ],
+      "scores": [
+        0.8929746747016907,
+        0.8395114541053772,
+        0.8363505601882935
+      ],
+      "hit": true
+    }
+  ],
+  "hit_at_3": 1.0,
+  "clinical_validation": false,
+  "scope": "Eight hand-authored development queries; not a broad retrieval benchmark"
+}

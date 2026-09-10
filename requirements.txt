@@ -1,0 +1,22 @@
+# Hugging Face ZeroGPU Space dependencies.
+# Torch is pre-installed on ZeroGPU; list it for explicit pinning but
+# the host may override with its own CUDA build.
+torch==2.8.0
+transformers==5.16.1
+peft==0.20.0
+accelerate==1.14.0
+bitsandbytes==0.50.2
+tokenizers==0.23.2
+safetensors==0.8.0
+numpy==2.4.6
+fastapi==0.141.1
+uvicorn==0.52.4
+starlette==1.6.0
+pydantic==2.13.5
+gradio==6.26.0
+httpx==0.28.1
+huggingface-hub==1.30.0
+langchain-core==1.6.2
+langgraph==1.2.11
+langgraph-checkpoint==4.2.0
+lingua-language-detector==2.1.1

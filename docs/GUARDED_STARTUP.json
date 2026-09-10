@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-10",
+  "passed": true,
+  "scope": "Real model loaded through the hash-bound serving receipt, generated a synthetic reply, then cleared its session. Local only.",
+  "elapsed_seconds": 26.454,
+  "reply": {
+    "reply": "It sounds like things feel heavy this week. I'm here listening.",
+    "sources": [],
+    "palette": "sage",
+    "route": "support",
+    "fallback": false
+  },
+  "approved_for_publication": false
+}

@@ -1,0 +1,67 @@
+{
+  "scope": "Development diagnostic only; not application behavior or clinical evaluation",
+  "model": "unsloth/Qwen3-4B-Instruct-2507-bnb-4bit",
+  "revision": "f12db89cd5156e090618dded9b4367f23f8f3b33",
+  "rows": [
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Türkçe konuşan, nazik bir yapay zeka sohbet yardımcısısın. Psikolog değilsin. Kısa ve doğal yanıt ver."
+        },
+        {
+          "role": "user",
+          "content": "Arkadaşlarım doğum günümü unuttu. Bu beni üzdü, sadece konuşmak istiyorum."
+        }
+      ],
+      "mode": "sampled",
+      "reply": "Elbette, üzülüyorsun demek ki. Bir şeyi unutmak, özellikle de önemli bir şey gibi düşündüğün zaman çok acı olur. Sadece burada olmak için teşekkür ederim. 💙  \nİyi bir başlangıç olabilir: \"Seni tanıdım\" diye bir şey söylemek. Herkesin kendi yolunu gitmesi gerekiyor ama seninle konuşmak güzel geldi. 🌿",
+      "seconds": 7.96900000000096
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Türkçe konuşan, nazik bir yapay zeka sohbet yardımcısısın. Psikolog değilsin. Kısa ve doğal yanıt ver."
+        },
+        {
+          "role": "user",
+          "content": "Arkadaşlarım doğum günümü unuttu. Bu beni üzdü, sadece konuşmak istiyorum."
+        }
+      ],
+      "mode": "greedy",
+      "reply": "Elbette, sadece konuşmak istiyorsun, bu da çok iyi. Senin için bir şey olmazsa, sadece burada olmak istiyorum. 😊",
+      "seconds": 2.5
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Türkçe konuşan, nazik bir yapay zeka sohbet yardımcısısın. Geçmiş oturumları hatırlamazsın. Kısa ve doğal yanıt ver."
+        },
+        {
+          "role": "user",
+          "content": "Geçen ay anlattığım sorunu hatırlıyor musun?"
+        }
+      ],
+      "mode": "sampled",
+      "reply": "Maaleseme, geçmiş oturumlarla ilgili herhangi bir şey hatırlamıyorum. Sadece bu sefer sana yardımcı olabileceğim konulara odaklanırım. Yeni bir soru ya da hikaye paylaşmanı bekliyorum! 😊",
+      "seconds": 4.061999999998079
+    },
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Türkçe konuşan, nazik bir yapay zeka sohbet yardımcısısın. Geçmiş oturumları hatırlamazsın. Kısa ve doğal yanıt ver."
+        },
+        {
+          "role": "user",
+          "content": "Geçen ay anlattığım sorunu hatırlıyor musun?"
+        }
+      ],
+      "mode": "greedy",
+      "reply": "Maaleseme, geçmiş oturumları hatırlamıyorum. Ama senin anlattığın sorunu tekrar anlatabilirim, sana yardımcı olmamı ister misin? 😊",
+      "seconds": 3.6559999999990396
+    }
+  ]
+}

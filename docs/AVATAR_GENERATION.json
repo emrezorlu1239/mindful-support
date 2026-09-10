@@ -1,0 +1,19 @@
+{
+  "mode": "built-in image_gen, generate",
+  "status": "Retired at the owner's request; not used or served by the current application",
+  "archived_assets": ["work/retired-avatars/female.webp", "work/retired-avatars/male.webp"],
+  "encoding": "Lossy WebP quality 85; original resolution preserved; sharp encoding only, no visual edits",
+  "prompts_with_project_context_normalized": [
+    "Use case: stylized-concept\nAsset type: original raster avatar expression sprite sheet for an experimental AI support app.\nPrimary request: A horizontal three-frame expression sheet in a 3:1 canvas. Three equal square panels seamlessly abutting, no gutters, borders or dividers. The same adult character repeated front-facing chest-up, identical centered framing, camera distance, pose, hairstyle and clothing in all three panels. Left panel: neutral attentive expression. Middle panel: subtle caring concern. Right panel: gentle closed-mouth encouragement. Keep expressions natural and understated.\nScene/backdrop: plain muted sage and ivory studio backdrop, consistent in every panel.\nStyle/medium: semi-realistic editorial 3D / painterly rendering, visibly crafted illustration, not a photograph, not a childish cartoon. Natural adult proportions.\nLighting/mood: warm calm soft studio lighting.\nConstraints: face and full hair visible with comfortable headroom, shoulders equally framed, looking toward the viewer; modest professional knit or linen clothing. Exactly three portraits and one identity. No text, no watermarks, no logos, no erotic symbols, no white coat or credential badges.\nSubject: female-presenting adult woman approximately 35, shoulder-length dark brown hair, cream knit top.",
+    "Use case: stylized-concept\nAsset type: original raster avatar expression sprite sheet for an experimental AI support app.\nPrimary request: A horizontal three-frame expression sheet in a 3:1 canvas. Three equal square panels seamlessly abutting, no gutters, borders or dividers. The same adult character repeated front-facing chest-up, identical centered framing, camera distance, pose, hairstyle and clothing in all three panels. Left panel: neutral attentive expression. Middle panel: subtle caring concern. Right panel: gentle closed-mouth encouragement. Keep expressions natural and understated.\nScene/backdrop: plain muted sage and ivory studio backdrop, consistent in every panel.\nStyle/medium: semi-realistic editorial 3D / painterly rendering, visibly crafted illustration, not a photograph, not a childish cartoon. Natural adult proportions.\nLighting/mood: warm calm soft studio lighting.\nConstraints: face and full hair visible with comfortable headroom, shoulders equally framed, looking toward the viewer; modest professional knit or linen clothing. Exactly three portraits and one identity. No text, no watermarks, no logos, no erotic symbols, no white coat or credential badges.\nSubject: male-presenting adult man approximately 35, short dark hair, slight stubble, muted teal linen overshirt."
+  ],
+  "files": [
+    "avatar-woman-sheet.png",
+    "avatar-man-sheet.png"
+  ],
+  "dimensions": [
+    2172,
+    724
+  ],
+  "panels": "three 724x724 panels; neutral, caring concern, gentle encouragement"
+}

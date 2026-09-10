@@ -1,0 +1,10 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "cuda": "12.8",
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "peak_vram_mb": 4172.00439453125,
+  "latency_seconds": 1.8129999999999882,
+  "sample": "{\n  \"reply\": \"I'm here to listen. How can I support you today?\",\n  \"source_ids\": [],\n  \"palette\": \"neutral\",\n  \"route\": \"support\"\n}",
+  "clinical_validation": false
+}

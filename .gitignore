@@ -1,0 +1,23 @@
+# Local credentials and personal configuration
+/private/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies, generated output and local state
+node_modules/
+.venv/
+__pycache__/
+.pytest_cache/
+dist/
+.next/
+coverage/
+*.log
+*.tsbuildinfo
+/work/
+/data/
+/models/
+/checkpoints/
+*.sqlite*
