@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-13",
+  "url": "https://zorlu5454-mindful-support.hf.space",
+  "passed": true,
+  "scope": "Live hosting integration with synthetic data; not clinical validation",
+  "health": {
+    "status": "ok",
+    "stage": "local_ai",
+    "model_ready": true,
+    "fine_tuned": true,
+    "chat_enabled": true,
+    "vector_database_ready": true,
+    "session_capacity": 1,
+    "queue_limit": 32
+  },
+  "reply_seconds": 14.97,
+  "synthetic_reply": {
+    "reply": "It sounds like today was demanding. I am here to listen. What feels hardest right now?",
+    "sources": [],
+    "palette": "sage",
+    "route": "support",
+    "fallback": false
+  },
+  "checks": [
+    "ready model and references",
+    "FIFO queue",
+    "real ZeroGPU checked reply",
+    "parent session history",
+    "history ownership",
+    "queue promotion"
+  ],
+  "limitations": [
+    "The first relocation/no-advice synthetic prompt returned the guarded fallback; the subsequent workday/listening prompt returned a non-fallback model reply.",
+    "This is an integration smoke check, not a new clinical or broad language evaluation.",
+    "Measured reply_seconds includes HTTP and queue overhead, not isolated generation time.",
+    "Free GPU quotas, provider queues and cold starts still apply."
+  ]
+}

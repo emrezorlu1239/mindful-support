@@ -2,7 +2,11 @@
 
 An experimental, noncommercial application exploring appointment-based AI emotional support, session-only conversation context, source-grounded psychoeducation, and a chat interface with optional gentle background transitions.
 
-**Status: Initial release published to [GitHub](https://github.com/emrezorlu1239/mindful-support) and [Hugging Face Space](https://huggingface.co/spaces/Zorlu5454/mindful-support). Powered by fine-tuned Qwen3.5-text-4B with QLoRA. English is the default; Turkish carries a strong language-limit notice. Zero persistent conversation storage; experimental demo only.** See [model selection](docs/MODEL_SELECTION.md), [language review](docs/FINAL_LANGUAGE_REVIEW.json) and [release readiness](docs/RELEASE_READINESS.md).
+**Live:** [Open Mindful Support](https://zorlu5454-mindful-support.hf.space/) · [Hugging Face Space](https://huggingface.co/spaces/Zorlu5454/mindful-support)
+
+Powered by the project's actually fine-tuned Qwen3.5 text-only 4B adapter on free ZeroGPU hosting. English is the default; Turkish carries a strong language-limit notice. One active conversation is admitted at a time, with a bounded waiting queue. Daily provider quotas and cold starts can make the service temporarily unavailable.
+
+**Deployment verified on 2026-09-13:** a real hosted model response, session history, ownership isolation and queue promotion passed. See [live verification](docs/LIVE_DEPLOYMENT_CHECK.json) and [deployment notes](docs/DEPLOYMENT.md). Language scores are small local engineering evaluations, not clinical measures.
 
 This demo is not a psychologist, therapy service, diagnostic tool, or emergency response service. It has no clinical validation or psychologist endorsement. Development evaluation must not be presented as proof of treatment effectiveness.
 
@@ -15,7 +19,7 @@ This demo is not a psychologist, therapy service, diagnostic tool, or emergency 
 - No long-term conversational memory or reuse of private conversations for training.
 - A curated vector knowledge base and a LangGraph response pipeline with input, retrieval, output, and crisis-routing checks.
 - Open-weight model evaluation and a separately verified fine-tuning stage.
-- Engineering validation followed by the owner's final acceptance test before publication.
+- Engineering checks and transparent experimental limitations; the owner explicitly waived a separate pre-release acceptance test.
 
 See [local AI development](docs/AI_DEVELOPMENT.md), [the architecture proposal](docs/ARCHITECTURE_PROPOSAL.md), [the delivery plan](docs/DELIVERY_PLAN.md), and [the source register](docs/SOURCE_REGISTER.md).
 
@@ -68,7 +72,9 @@ The basic environment above supports booking tests. AI also requires the separat
 
 ## Publication
 
-The planned free host is Hugging Face ZeroGPU, subject to provider eligibility, Gradio integration and quotas. The laptop will not act as the public server. Publication follows engineering validation and the owner's final acceptance test. Follow [release readiness](docs/RELEASE_READINESS.md) for the outstanding work; there is no automatic deployment.
+The application and static interface are hosted together on Hugging Face ZeroGPU. The laptop is not the public server. Open the direct app link above to use the session cookie in a normal browser tab. GPU work is stateless; the main application owns the bounded conversation memory. Only opaque handoff tickets pass through Gradio queues, with run history disabled.
+
+The owner authorized publication without a separate acceptance test. Hosted verification is recorded in `docs/LIVE_DEPLOYMENT_CHECK.json`. There is no automatic deployment workflow; source checks run in GitHub Actions. Read [deployment notes](docs/DEPLOYMENT.md) before updating the Space.
 
 ## Contributing and security
 

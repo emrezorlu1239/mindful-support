@@ -1,3 +1,9 @@
+# Published release — 2026-09-13
+
+The application is live at https://zorlu5454-mindful-support.hf.space/ and source is published at https://github.com/emrezorlu1239/mindful-support. The owner explicitly waived the separate final acceptance test and authorized publication. Live model inference, parent-process session history, ownership and FIFO promotion were verified. See LIVE_DEPLOYMENT_CHECK.json and DEPLOYMENT.md.
+
+The following earlier checklist is historical. It is not a current publication blocker. Quotas, model limitations and the recorded dependency advisory remain relevant.
+
 # Release readiness
 
 Last reviewed: 2026-09-11. **Published.**

@@ -39,7 +39,9 @@ class CandidateModel(LocalModel):
                     or receipt["adapter_sha256"]!=self.adapter_sha256):
                 raise ValueError("Candidate adapter provenance mismatch")
             self.model=PeftModel.from_pretrained(self.model,str(adapter),is_trainable=False,
-                local_files_only=True,use_safetensors=True)
+                local_files_only=True,use_safetensors=True,
+                # Safetensors' direct CUDA reader bypasses ZeroGPU emulation.
+                **({"torch_device":"cpu"} if not measure else {}))
         self.model.eval()
         self.load_seconds=time.monotonic()-start
         self.quantized=quantized or self.entry.get("prequantized",False)
