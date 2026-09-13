@@ -2,7 +2,9 @@
 export async function checkedReply(response: Response, signal: AbortSignal) {
   const payload = await response.json();
   if (response.status !== 202) return payload;
-  if (payload.transport !== 'gradio' || !/^[A-Za-z0-9_-]{43}$/.test(payload.ticket)) {
+  if (!payload || typeof payload !== 'object' || !('transport' in payload) ||
+      payload.transport !== 'gradio' || !('ticket' in payload) ||
+      typeof payload.ticket !== 'string' || !/^[A-Za-z0-9_-]{43}$/.test(payload.ticket)) {
     throw Error('Invalid compute handoff');
   }
   const base = '/api/gpu/gradio_api/call/reply';
@@ -12,8 +14,8 @@ export async function checkedReply(response: Response, signal: AbortSignal) {
     body: JSON.stringify({ data: [payload.ticket] }),
   });
   if (!queued.ok) throw Error('GPU queue unavailable');
-  const { event_id } = await queued.json();
-  if (!/^[a-f0-9]{32}$/.test(event_id)) throw Error('Invalid GPU event');
+  const { event_id } = (await queued.json()) as { event_id?: unknown };
+  if (typeof event_id !== 'string' || !/^[a-f0-9]{32}$/.test(event_id)) throw Error('Invalid GPU event');
   const events = await fetch(base + '/' + event_id, { credentials: 'same-origin', signal });
   if (!events.ok || !events.body) throw Error('GPU unavailable');
   const reader = events.body.getReader();

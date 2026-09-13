@@ -6,7 +6,7 @@ from ai.model import LocalModel
 from ai.candidate_download import validate_snapshot
 
 class CandidateModel(LocalModel):
-    def __init__(self,name,quantized=False,adapter=None):
+    def __init__(self,name,quantized=False,adapter=None,measure=True):
         import torch
         from transformers import AutoTokenizer, AutoModelForCausalLM, Qwen3_5ForConditionalGeneration, BitsAndBytesConfig
         self.torch=torch
@@ -15,7 +15,8 @@ class CandidateModel(LocalModel):
         snapshot=ROOT/"models/hf/hub"/("models--"+name.replace("/","--"))/"snapshots"/self.entry["revision"]
         validate_snapshot(snapshot,self.entry)
         if not torch.cuda.is_available(): raise RuntimeError("CUDA required for candidate measurement")
-        torch.cuda.reset_peak_memory_stats()
+        if measure:
+            torch.cuda.reset_peak_memory_stats()
         self.tokenizer=AutoTokenizer.from_pretrained(snapshot,local_files_only=True,trust_remote_code=False)
         loader=Qwen3_5ForConditionalGeneration if self.entry["model_type"]=="qwen3_5" else AutoModelForCausalLM
         options={}

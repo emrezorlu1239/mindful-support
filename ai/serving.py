@@ -7,7 +7,8 @@ from ai.config import ROOT
 FILES=("ai/serving.json","ai/candidates.json","ai/config.py","ai/model.py","ai/candidate_model.py",
        "ai/candidate_download.py","ai/pipeline.py","ai/retrieval.py","ai/language.py","ai/runtime.py",
        "ai/serving.py","knowledge/passages.json","web/app/language-notice.tsx",
-       "backend/app.py","backend/admission.py")
+       "backend/app.py","backend/admission.py","backend/gpu_tickets.py","app.py",
+       "web/lib/chat-transport.ts")
 PACKAGES=("torch","transformers","peft","accelerate","bitsandbytes","tokenizers","langgraph","numpy","lingua-language-detector")
 
 def selection():
@@ -19,11 +20,14 @@ def selection():
     entry=json.loads((ROOT/"ai/candidates.json").read_text())[spec["model"]]
     return spec,adapter,receipt,entry
 
-def serving_fingerprint():
+def serving_fingerprint(profile='local'):
     _spec,adapter,_receipt,_entry=selection()
-    files={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in FILES}
+    files={name:hashlib.sha256((ROOT/name).read_bytes().replace(b'\r\n',b'\n')).hexdigest() for name in FILES}
     files["adapter_config.json"]=hashlib.sha256((adapter/"adapter_config.json").read_bytes()).hexdigest()
-    return {"files":files,"packages":{name:version(name) for name in PACKAGES}}
+    packages={name:version(name) for name in PACKAGES}
+    if profile == 'hosted':
+        packages['torch']=packages['torch'].split('+')[0]
+    return {"files":files,"packages":packages}
 
 def verify_receipt(receipt,spec,entry,adapter_digest,fingerprint):
     if receipt.get("approved_for_local_demo") is not True:
@@ -37,7 +41,7 @@ def verify_receipt(receipt,spec,entry,adapter_digest,fingerprint):
             or spec["concurrent_generations"]!=1 or receipt.get("engineering_checks_passed") is not True):
         raise RuntimeError("Serving policy or engineering checks do not match")
 
-def load_selected_runtime():
+def load_selected_runtime(profile='local'):
     from ai.runtime import AIRuntime
     spec,adapter,path,entry=selection()
     if not path.is_file():raise RuntimeError("Selected model evaluation is missing")
@@ -45,7 +49,14 @@ def load_selected_runtime():
     if receipt.get("approved_for_local_demo") is not True:
         raise RuntimeError("Selected model is not approved for local use")
     digest=hashlib.sha256((adapter/"adapter_model.safetensors").read_bytes()).hexdigest()
-    verify_receipt(receipt,spec,entry,digest,serving_fingerprint())
+    if profile == 'hosted':
+        if receipt.get('approved_for_publication') is not True:
+            raise RuntimeError('Hosted release is not authorized')
+        receipt={**receipt, 'fingerprint': receipt.get('hosted_fingerprint')}
+        fingerprint=serving_fingerprint(profile='hosted')
+    else:
+        fingerprint=serving_fingerprint()
+    verify_receipt(receipt,spec,entry,digest,fingerprint)
     for filename,digest in receipt["evidence_sha256"].items():
         evidence=(ROOT/filename).resolve()
         evidence.relative_to((ROOT/"docs").resolve())
@@ -53,4 +64,4 @@ def load_selected_runtime():
             raise RuntimeError("Evaluation evidence changed")
     from ai.candidate_model import CandidateModel
     from ai.retrieval import Retriever,Embedder
-    return AIRuntime(CandidateModel(spec["model"],quantized=True,adapter=adapter),Retriever(Embedder()))
+    return AIRuntime(CandidateModel(spec["model"],quantized=True,adapter=adapter,measure=profile!='hosted'),Retriever(Embedder()))

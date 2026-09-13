@@ -1,5 +1,7 @@
 # Hugging Face ZeroGPU Space dependencies.
 # torch, gradio, uvicorn, and spaces are platform-managed and pre-installed by the ZeroGPU runtime.
+torch==2.13.0
+spaces==0.51.3
 transformers==5.16.1
 peft==0.20.0
 accelerate==1.14.0

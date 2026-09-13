@@ -289,7 +289,7 @@ export default function Mindful() {
         </div>
         <div className="local-status">
           <i />
-          {t('Yerel geliştirme', 'Local development')}
+          {t('Deneysel AI', 'Experimental AI')}
           <span>0.1</span>
         </div>
       </aside>
@@ -575,8 +575,8 @@ export default function Mindful() {
                         </div>
                         <p className="hint">
                           {t(
-                            'Bu geliştirme sürümünde örnek bir ad kullan; gerçek hassas bilgi girme.',
-                            'Use a sample name in this development version; do not enter real sensitive information.',
+                            'Bir takma ad kullanabilirsin; gereksiz kişisel veya hassas bilgi paylaşma.',
+                            'You may use a nickname; avoid sharing unnecessary personal or sensitive details.',
                           )}
                         </p>
                       </div>
@@ -596,8 +596,8 @@ export default function Mindful() {
                             </h2>
                             <p>
                               {t(
-                                '20 dakikalık yerel deneme randevusu.',
-                                'A 20-minute local practice appointment.',
+                                '20 dakikalık görüşme.',
+                                'A 20-minute conversation.',
                               )}
                             </p>
                           </div>
@@ -662,8 +662,8 @@ export default function Mindful() {
                         ) : (
                           <div className="notice">
                             {t(
-                              'Yerel sunucuya ulaşılamıyor.',
-                              'The local server is unavailable.',
+                              'Hizmete şu anda ulaşılamıyor.',
+                              'The service is currently unavailable.',
                             )}
                             <Button
                               type="button"
@@ -795,8 +795,8 @@ export default function Mindful() {
                 t('SANA AYRILAN ZAMAN', 'TIME FOR YOU'),
                 t('Görüşmelerim', 'My sessions'),
                 t(
-                  'Yerel deneme randevularını buradan yönet.',
-                  'Manage your local practice appointments here.',
+                  'Randevularını buradan yönet.',
+                  'Manage your appointments here.',
                 ),
               )}
               <div className="notice">
@@ -1101,8 +1101,8 @@ export default function Mindful() {
                 )
               : modal === 'privacy'
                 ? t(
-                    'Randevu bilgileri bu bilgisayardaki veritabanında tutulur. Erişim çerezi 24 saat sonra sona erer; bağlı kayıtlar sunucu çalışırken temizlenir. Sohbet açıldığında mesajlar yalnızca oturum belleğinde işlenir; kalıcı sohbet geçmişi tutulmaz. Görüşme bitince veya süresi dolunca oturum belleği temizlenir. Bulut işlemleri yayın öncesinde ayrıca açıklanacak.',
-                    'Appointment details are stored in a database on this computer. The access cookie expires after 24 hours and associated records are cleaned while the server runs. When chat is enabled, messages are processed only in session memory; permanent chat history is not stored. Session memory is cleared when the conversation ends or expires. Cloud processing will be described before publication.',
+                    'Uygulama ve AI, Hugging Face sunucularında çalışır. Mesajlar yanıt üretmek için bu hizmete gönderilir; uygulama kalıcı sohbet geçmişi tutmaz ve mesajlarını eğitim için toplamaz. Görüşme sona erdiğinde veya süresi dolduğunda oturum belleği temizlenir. Randevu bilgileri ayrı tutulur; 24 saatlik erişim çerezi sona erdikten sonra ilişkili kayıtlar temizlenir. Sunucu yeniden başlarsa randevular kaybolabilir. Hizmet sağlayıcının kendi gizlilik politikası geçerlidir.',
+                    'The application and AI run on Hugging Face servers. Messages are sent to that service to generate replies; this application does not keep permanent chat history or collect messages for training. Session memory is cleared when a conversation ends or expires. Appointment details are stored separately and associated records are removed after the 24-hour access cookie expires. A server restart may reset appointments. The hosting provider has its own privacy policy.',
                   )
                 : modal === 'about'
                   ? t(
@@ -1110,8 +1110,8 @@ export default function Mindful() {
                       'Mindful is an experimental AI support application. It is not clinically validated and does not provide diagnosis, treatment, or professional psychological care. The model can produce incorrect or unsuitable replies. Color transitions are a visual preference without claims of therapeutic effects.',
                     )
                   : t(
-                      'Bu deneme randevusu silinecek ve saat yeniden kullanılabilir olacak.',
-                      'This practice appointment will be deleted and the slot released.',
+                      'Bu randevu silinecek ve saat yeniden kullanılabilir olacak.',
+                      'This appointment will be deleted and the slot released.',
                     )}
           </DialogDescription>
           {error && (

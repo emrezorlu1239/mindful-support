@@ -1,25 +1,28 @@
 {
-  "date": "2026-09-10",
+  "date": "2026-09-13",
   "model": "techwithsergiu/Qwen3.5-text-4B-bnb-4bit",
   "revision": "70db06548a71a853f12fc10b63d8c0961642ed74",
   "adapter_sha256": "a83372b328469288983a9403f075e85b6ab37e110cd440758d451938367d7000",
   "fingerprint": {
     "files": {
       "ai/serving.json": "a9758c5277579000c76c2af80e94ed233eaf634689c19673ff981b9c0389ffc7",
-      "ai/candidates.json": "a82a45a07cc0e30fff6deb29a32486d99e9c708cd6326ff18ace4baf307bfb70",
+      "ai/candidates.json": "7cb298ccd6c2e550622582ed984d0dfd889993bc341126c8fcb400ef10d7ea9e",
       "ai/config.py": "5509d5938e130d31f38035f34e593f3f7af6009c9edcb791e2a1f3b7881086e3",
       "ai/model.py": "acd9dab6356a331f246b245e3898604e9e38fcaba36a56e82f758269b2a5f792",
-      "ai/candidate_model.py": "e7ab9b0ba4b08c2f4c802326b3d252bb4c6d54bb9b09ae5bdd7b140e4c5e647d",
+      "ai/candidate_model.py": "e8f5d86f42e73d07d07d07afb61e1a89d04bc0a46bf53f5bd7660b304d78df54",
       "ai/candidate_download.py": "ce2f64edb97632dda3990921d54ff3b7974f156e622b24d916dd0e2d3ecc1d41",
       "ai/pipeline.py": "f499452e0d74023b82b9d54e8633f47d45f57faa3008e94a1e6efe6f951155fe",
       "ai/retrieval.py": "7082632cf9ec5547cb93c115448fe09c3a04ef328a54cbfbab77d541051c128f",
       "ai/language.py": "8c05fef9ff875b9956903fc3865bde37331cefcb79b884e852c9cb4d3781bbb6",
       "ai/runtime.py": "fd2daaf44c651e4910aac4a4397424cc83bfa9655bd89c9d9d9b4274270217aa",
-      "ai/serving.py": "7322b6a5435652e1ead82c5f5ef06afafe77fa69792964bd525e647898ea2420",
-      "knowledge/passages.json": "0bc8d13b04331aa8b86163e08816076fea3ff780089af408ff95c8059ea465bc",
+      "ai/serving.py": "8ae22b50d782fbc141eae72e5af340e2a090c4ade9094135aa8b9ecb09a9bdf7",
+      "knowledge/passages.json": "79a3dab88373c2203a69072cd078c7f08507010b69b8e509d578f3d7a3a03aae",
       "web/app/language-notice.tsx": "c85addb8271404c057f659511f89dd977d0a1ad4993a5cb869a916585e7a09a8",
-      "backend/app.py": "adde6cec4d5bc320b87ca90f322a358f99ae0f9a734f5c37cdb6334f27d0e27c",
+      "backend/app.py": "45a7ebe6230bd2ffdd7b564c36c3969fc0bffc1b4df5f891fab6c256e5101676",
       "backend/admission.py": "01d78563c4f082594bb0062a4c48fdcd6a4f01c790fd4f7555008634b21b923e",
+      "backend/gpu_tickets.py": "0dfa85b8e9adb491c3c79458b86c380ed8ae7db3c6fa8e8b8e97dcf0e00d9d85",
+      "app.py": "cc721174fdc93685968ba348c0ba792d4568c7a56a8f66d11806e764311b2b3b",
+      "web/lib/chat-transport.ts": "484ba40abfbe938ea61fe9c4b13b04a0efce95d38fe075cf3e1f72d36ab119ab",
       "adapter_config.json": "7e37b2cfafa55d7b414e3ad38c2a58c585882a188ec2e7b509433cc7fce4e5f8"
     },
     "packages": {
@@ -43,7 +46,7 @@
   "approved_for_local_demo": true,
   "approved_for_publication": true,
   "clinical_validation": false,
-  "owner_acceptance": "authorized_2026-09-10",
+  "owner_acceptance": "Owner explicitly waived final acceptance and authorized publication.",
   "evidence_sha256": {
     "docs/FINAL_LANGUAGE_REVIEW.json": "ff4d1ffb0c8e4ee582821e97dbfec0dde8f6e07a72e4921fb80b7965c45df7ff",
     "docs/AI_HTTP_INTEGRATION.json": "66b87567773f330052f8ff48ae693c14de5c5eda59dbd2f5e19842fbc01db706",
@@ -51,5 +54,40 @@
     "docs/TRAINING_Qwen3.5-text-4B-bnb-4bit.json": "b0cdf36d3c0e0ce32ed876bf8ca3ab1758127566f55f868974734b516f0a72f8",
     "docs/CANDIDATE_Qwen3.5-text-4B-bnb-4bit_nf4_adapter_holdout_fixed.json": "d070438eb8331cecf127b5939ce2c19a25d5b50e7e2b14e4544c2074d2a27864",
     "docs/CANDIDATE_Qwen3.5-text-4B-bnb-4bit_nf4_adapter_reviewed.json": "45c9e8dc29456972ce33222a32afd990b034cc9fce9480d3af25d73a626c6019"
-  }
+  },
+  "hosted_fingerprint": {
+    "files": {
+      "ai/serving.json": "a9758c5277579000c76c2af80e94ed233eaf634689c19673ff981b9c0389ffc7",
+      "ai/candidates.json": "7cb298ccd6c2e550622582ed984d0dfd889993bc341126c8fcb400ef10d7ea9e",
+      "ai/config.py": "5509d5938e130d31f38035f34e593f3f7af6009c9edcb791e2a1f3b7881086e3",
+      "ai/model.py": "acd9dab6356a331f246b245e3898604e9e38fcaba36a56e82f758269b2a5f792",
+      "ai/candidate_model.py": "e8f5d86f42e73d07d07d07afb61e1a89d04bc0a46bf53f5bd7660b304d78df54",
+      "ai/candidate_download.py": "ce2f64edb97632dda3990921d54ff3b7974f156e622b24d916dd0e2d3ecc1d41",
+      "ai/pipeline.py": "f499452e0d74023b82b9d54e8633f47d45f57faa3008e94a1e6efe6f951155fe",
+      "ai/retrieval.py": "7082632cf9ec5547cb93c115448fe09c3a04ef328a54cbfbab77d541051c128f",
+      "ai/language.py": "8c05fef9ff875b9956903fc3865bde37331cefcb79b884e852c9cb4d3781bbb6",
+      "ai/runtime.py": "fd2daaf44c651e4910aac4a4397424cc83bfa9655bd89c9d9d9b4274270217aa",
+      "ai/serving.py": "8ae22b50d782fbc141eae72e5af340e2a090c4ade9094135aa8b9ecb09a9bdf7",
+      "knowledge/passages.json": "79a3dab88373c2203a69072cd078c7f08507010b69b8e509d578f3d7a3a03aae",
+      "web/app/language-notice.tsx": "c85addb8271404c057f659511f89dd977d0a1ad4993a5cb869a916585e7a09a8",
+      "backend/app.py": "45a7ebe6230bd2ffdd7b564c36c3969fc0bffc1b4df5f891fab6c256e5101676",
+      "backend/admission.py": "01d78563c4f082594bb0062a4c48fdcd6a4f01c790fd4f7555008634b21b923e",
+      "backend/gpu_tickets.py": "0dfa85b8e9adb491c3c79458b86c380ed8ae7db3c6fa8e8b8e97dcf0e00d9d85",
+      "app.py": "cc721174fdc93685968ba348c0ba792d4568c7a56a8f66d11806e764311b2b3b",
+      "web/lib/chat-transport.ts": "484ba40abfbe938ea61fe9c4b13b04a0efce95d38fe075cf3e1f72d36ab119ab",
+      "adapter_config.json": "7e37b2cfafa55d7b414e3ad38c2a58c585882a188ec2e7b509433cc7fce4e5f8"
+    },
+    "packages": {
+      "torch": "2.13.0",
+      "transformers": "5.16.1",
+      "peft": "0.20.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.2",
+      "tokenizers": "0.23.2",
+      "langgraph": "1.2.11",
+      "numpy": "2.2.6",
+      "lingua-language-detector": "2.1.1"
+    }
+  },
+  "hosted_note": "Platform-specific dependencies pinned for deployment; actual hosted inference must be checked before reporting a working release. This is not clinical validation."
 }
