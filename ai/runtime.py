@@ -3,7 +3,12 @@ import hashlib
 import threading
 import time
 from dataclasses import dataclass, field
-from ai.pipeline import build_pipeline
+from ai.pipeline import build_pipeline, crisis_signal, crisis_reply
+
+class ComputeUnavailable(Exception):
+    def __init__(self, code="compute_unavailable"):
+        self.code = code if code in {"gpu_quota", "gpu_duration", "compute_unavailable"} else "compute_unavailable"
+        super().__init__(self.code)
 
 class ModelBusy(Exception): pass
 class SessionLimit(Exception): pass
@@ -45,8 +50,10 @@ class AIRuntime:
                     return result
                 if len(session.messages)>=40: raise SessionLimit()
                 history=[{"role":row["role"],"content":row["content"]} for row in session.messages[-6:]]
-            result=self.graph.invoke({"message":message,"language":language,"history":history},
-                                     config={"callbacks":[],"recursion_limit":8})["result"]
+            # Fixed emergency guidance must remain available when the GPU quota is exhausted.
+            result = crisis_reply(language) if crisis_signal(message) else self.graph.invoke(
+                {"message":message,"language":language,"history":history},
+                config={"callbacks":[],"recursion_limit":8})["result"]
             if not is_active():
                 self.forget(booking_id)
                 raise SessionEnded()

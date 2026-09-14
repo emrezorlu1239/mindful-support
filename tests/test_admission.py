@@ -244,3 +244,24 @@ def test_heartbeat_rates_are_isolated_per_owner(system):
         result = a.post('/api/admission/status')
     assert result.status_code == 429
     assert b.post('/api/admission/status').status_code == 200
+
+
+def test_full_capacity_burst_and_orderly_drain(tmp_path):
+    app = create_app(tmp_path / 'burst.sqlite', queue_limit=32)
+    clients = [client(app) for _ in range(40)]
+    rows = [booking(c) for c in clients]
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        results = list(pool.map(lambda pair: join(*pair).status_code, zip(clients, rows)))
+    assert results.count(200) == 33
+    assert results.count(429) == 7
+    snapshots = [status(c) for c in clients]
+    assert sum(s['state'] == 'active' for s in snapshots) == 1
+    waiting = sorted((s['queue_position'], i) for i,s in enumerate(snapshots) if s['state'] == 'waiting')
+    assert [position for position, _ in waiting] == list(range(1, 33))
+    active = next(i for i,s in enumerate(snapshots) if s['state'] == 'active')
+    for _, next_index in waiting:
+        assert leave(clients[active], rows[active]).status_code == 200
+        assert status(clients[next_index])['state'] == 'active'
+        active = next_index
+    leave(clients[active], rows[active])
+    assert status(clients[active])['active_count'] == 0

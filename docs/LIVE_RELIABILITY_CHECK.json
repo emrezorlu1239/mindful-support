@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-14",
+  "url": "https://zorlu5454-mindful-support.hf.space",
+  "passed": true,
+  "scope": "Live hosting integration with synthetic data; not clinical validation",
+  "health": {
+    "status": "ok",
+    "stage": "local_ai",
+    "model_ready": true,
+    "fine_tuned": true,
+    "chat_enabled": true,
+    "vector_database_ready": true,
+    "session_capacity": 1,
+    "queue_limit": 32
+  },
+  "authenticated_test": true,
+  "turns": [
+    {
+      "seconds": 11.0,
+      "result": {
+        "reply": "It sounds like today was demanding. I am here to listen. What feels hardest right now?",
+        "sources": [],
+        "palette": "sage",
+        "route": "support",
+        "fallback": false
+      }
+    },
+    {
+      "seconds": 8.33,
+      "result": {
+        "reply": "Feeling like you're always falling short is exhausting. Many people experience this pressure even when they've completed necessary work. It may help to name specific moments when that thought arose, rather than assuming it reflects everything you did.",
+        "sources": [],
+        "palette": "warm",
+        "route": "support",
+        "fallback": false
+      }
+    },
+    {
+      "seconds": 7.23,
+      "result": {
+        "reply": "Guilt around rest often comes from trying to meet more than is needed. When you think about your day, which moment felt like the turning point?",
+        "sources": [],
+        "palette": "sage",
+        "route": "support",
+        "fallback": false
+      }
+    }
+  ],
+  "checks": [
+    "ready model and references",
+    "FIFO queue",
+    "real ZeroGPU checked reply",
+    "parent session history",
+    "history ownership",
+    "queue promotion"
+  ]
+}

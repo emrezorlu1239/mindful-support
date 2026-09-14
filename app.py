@@ -84,7 +84,13 @@ def main():
     runtime = load_selected_runtime(profile='hosted' if hosted else 'local')
     original_graph = runtime.graph
 
-    @spaces.GPU(duration=60)
+    def gpu_duration(state):
+        # Short requests measured below 15 seconds on the hosted GPU. Keep
+        # longer-context headroom without reserving it for every small turn.
+        characters = len(state.get('message', '')) + sum(len(m.get('content', '')) for m in state.get('history', []))
+        return 30 if characters <= 1800 else 60
+
+    @spaces.GPU(duration=gpu_duration)
     def checked_generation(state):
         try:
             result = original_graph.invoke(state, config={'callbacks': [], 'recursion_limit': 8})
@@ -96,9 +102,18 @@ def main():
 
     class GPUExecution:
         def invoke(self, state, config=None):
-            result = checked_generation(state)
+            from ai.runtime import ComputeUnavailable
+            try:
+                result = checked_generation(state)
+            except Exception as exc:
+                # Classify trusted provider titles only; never log exception bodies.
+                title = getattr(exc, 'title', '')
+                code = ('gpu_quota' if title in ('ZeroGPU quota exceeded', 'ZeroGPU pending credits exceeded')
+                        else 'gpu_duration' if title == 'ZeroGPU illegal duration' else 'compute_unavailable')
+                print('Compute request failed: ' + code, flush=True)
+                raise ComputeUnavailable(code) from None
             if 'result' not in result:
-                raise RuntimeError('GPU generation unavailable')
+                raise ComputeUnavailable()
             return result
 
     runtime.graph = GPUExecution()

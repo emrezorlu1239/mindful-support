@@ -368,10 +368,12 @@ def create_app(db_path=None, now=time.time, capacity=None, queue_limit=32, ai_ru
         admitted = active_booking(current, data.booking_id)
         if not admitted:
             raise HTTPException(403, 'Active session required.')
-        from ai.runtime import ModelBusy, SessionLimit, SessionEnded
+        from ai.runtime import ModelBusy, SessionLimit, SessionEnded, ComputeUnavailable
         try:
             return ai_runtime.respond(data.booking_id, data.request_id,
                 data.message.strip(), admitted["language"], lambda: bool(active_booking(current, data.booking_id)))
+        except ComputeUnavailable as exc:
+            raise HTTPException(429 if exc.code == "gpu_quota" else 503, {"code": exc.code})
         except ModelBusy:
             raise HTTPException(429, "A reply is already being prepared. Please wait.")
         except SessionLimit:

@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { api } from '@/lib/api';
 import { LanguageNotice } from './language-notice';
-import { checkedReply } from '@/lib/chat-transport';
+import { checkedReply, chatErrorText } from '@/lib/chat-transport';
 
 type Lang = 'tr' | 'en';
 type Message = {
@@ -35,7 +35,7 @@ export function ChatRoom({
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<unknown>(null);
   const [ambient, setAmbient] = useState(true);
   const [palette, setPalette] = useState<Reply['palette']>('neutral');
   const pending = useRef<{ message: string; id: string } | null>(null);
@@ -81,7 +81,7 @@ export function ChatRoom({
       pending.current = { message: content, id: crypto.randomUUID() };
     }
     setBusy(true);
-    setError(false);
+    setError(null);
     try {
       const signal = AbortSignal.timeout(120000);
       const response = await fetch('/api/chat', {
@@ -95,7 +95,6 @@ export function ChatRoom({
           message: content,
         }),
       });
-      if (!response.ok) throw Error('Chat unavailable');
       const result = (await checkedReply(response, signal)) as Reply;
       setMessages((previous) => [
         ...previous,
@@ -105,8 +104,8 @@ export function ChatRoom({
       setPalette(result.palette);
       setInput('');
       pending.current = null;
-    } catch {
-      setError(true);
+    } catch (failure) {
+      setError(failure);
     } finally {
       setBusy(false);
     }
@@ -130,6 +129,13 @@ export function ChatRoom({
         </label>
       </div>
       {conversationLanguage === 'tr' && <LanguageNotice language={language} />}
+      <p className="ambient-note">
+        {t('Ücretsiz GPU kullanımının günlük süre sınırı vardır. Hugging Face hesabının kotasını kullanmak için ',
+           'Free GPU use has a daily time limit. To use your Hugging Face account allowance, ')}
+        <a href="https://huggingface.co/spaces/Zorlu5454/mindful-support" target="_blank" rel="noopener noreferrer">
+          {t('Hugging Face üzerinden aç ve hesabına giriş yap.', 'open on Hugging Face and sign in.')}
+        </a>
+      </p>
       <p className="ambient-note">
         {t(
           'Renkler yalnızca görsel bir tercihtir; ruhsal durumunu teşhis etmez.',
@@ -219,12 +225,9 @@ export function ChatRoom({
           </Button>
         </div>
       )}
-      {error && (
+      {error != null && (
         <p className="error" role="alert">
-          {t(
-            'Yanıt tamamlanamadı. Mesajın kutuda duruyor; bağlantını kontrol edip yeniden deneyebilirsin.',
-            'The reply could not be completed. Your message is still in the box; check your connection and try again.',
-          )}
+          {chatErrorText(error, language)}
         </p>
       )}
       <form
