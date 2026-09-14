@@ -1,3 +1,5 @@
+> Historical development log. For the current selected Qwen3.5 model, use [LOCAL_MODEL_SETUP.md](LOCAL_MODEL_SETUP.md). Earlier rejection and publication status below describe previous stages.
+
 # Local AI development
 
 Updated 2026-09-09. The owner explicitly authorized GPU training and testing on their computer. No Google account, external AI API key or paid service is needed for this local experiment. This permission does not authorize laptop hosting for public users.

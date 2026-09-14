@@ -44,7 +44,7 @@
   "turkish_notice": "strong",
   "engineering_checks_passed": true,
   "approved_for_local_demo": true,
-  "approved_for_publication": true,
+  "approved_for_publication": false,
   "clinical_validation": false,
   "owner_acceptance": "Owner explicitly waived final acceptance and authorized publication.",
   "evidence_sha256": {

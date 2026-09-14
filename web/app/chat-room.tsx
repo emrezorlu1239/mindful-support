@@ -130,13 +130,6 @@ export function ChatRoom({
       </div>
       {conversationLanguage === 'tr' && <LanguageNotice language={language} />}
       <p className="ambient-note">
-        {t('Ücretsiz GPU kullanımının günlük süre sınırı vardır. Hugging Face hesabının kotasını kullanmak için ',
-           'Free GPU use has a daily time limit. To use your Hugging Face account allowance, ')}
-        <a href="https://huggingface.co/spaces/Zorlu5454/mindful-support" target="_blank" rel="noopener noreferrer">
-          {t('Hugging Face üzerinden aç ve hesabına giriş yap.', 'open on Hugging Face and sign in.')}
-        </a>
-      </p>
-      <p className="ambient-note">
         {t(
           'Renkler yalnızca görsel bir tercihtir; ruhsal durumunu teşhis etmez.',
           'Colors are a visual preference; they do not diagnose your mental state.',

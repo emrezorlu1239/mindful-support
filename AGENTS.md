@@ -1,5 +1,7 @@
 # Project instructions
 
+- Current owner direction (2026-09-14): this is a local experimental application concept. Keep GitHub public for source and publish the trained adapter separately on Hugging Face. The previous live Space is paused and private. Do not reactivate public hosting without a new explicit request. This supersedes earlier public-hosting directions.
+
 - Work only inside this project. Do not modify sibling projects in C:/Dev.
 - Current stage: local demo preparation, explicitly authorized by the owner after discovery. This local stage requires no external API keys or cloud deployment accounts. Cloud credentials remain a separate pre-publication setup item. Proceed with isolated local implementation; do not interpret the previous discovery stage as a blocker.
 - Do not interpret unanswered discovery questions as approval of scope changes.

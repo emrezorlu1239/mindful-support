@@ -11,6 +11,7 @@ REPO = 'Zorlu5454/mindful-support'
 
 
 def main():
+    raise RuntimeError('Public hosting is retired. Use Start-Local.ps1 -EnableAI.')
     values = {}
     for line in (ROOT / 'private/API_KEYS.txt').read_text(encoding='utf-8-sig').splitlines():
         if '=' in line and not line.lstrip().startswith('#'):

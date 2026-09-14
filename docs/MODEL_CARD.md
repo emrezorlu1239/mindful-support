@@ -1,8 +1,21 @@
+---
+language:
+- en
+- tr
+license: apache-2.0
+base_model: techwithsergiu/Qwen3.5-text-4B-bnb-4bit
+library_name: peft
+pipeline_tag: text-generation
+tags:
+- lora
+- experimental
+---
+
 # Mindful experimental adapter
 
 ## Intended use
 
-Local, noncommercial development of an English/Turkish emotional-support interface for adults. The model is an AI system, not a psychologist. It must not provide diagnosis, medication decisions, psychotherapy or emergency response. Public deployment has not been approved.
+Local, noncommercial development of an English/Turkish emotional-support interface for adults. The model is an AI system, not a psychologist. It must not provide diagnosis, medication decisions, psychotherapy or emergency response. The adapter is distributed for local experimentation; there is no public chat service.
 
 ## Base and adaptation
 
@@ -23,7 +36,7 @@ The raw adapter is not intended for direct user access. Application checks, sess
 
 **Selected for bounded local demonstration:** English 9.0/10 and Turkish 6.4/10 on fourteen manually reviewed synthetic scenarios per language, including two fixed emergency replies in each language. Turkish uses a strong language-limit notice. See FINAL_LANGUAGE_REVIEW.json for all scores and remaining defects.
 
-The final held-out prompts were not used in gradient updates. Once first-run failures were used to improve routing and filtering, repeated results became regression evidence. These scores describe a small development sample; they do not establish population-level quality, clinical effectiveness or safety. Resource and real HTTP integration checks passed. Public provider compatibility and final owner acceptance remain pending.
+The final held-out prompts were not used in gradient updates. Once first-run failures were used to improve routing and filtering, repeated results became regression evidence. These scores describe a small development sample; they do not establish population-level quality, clinical effectiveness or safety. Resource and real HTTP integration checks passed. The application is now a local demonstration.
 
 A passing local engineering gate is not clinical validation or public-release approval. Small synthetic samples, rule-based checks and a reviewer sharing the generator's model can miss harmful or misleading replies. Turkish quality must be examined separately from English quality.
 
@@ -35,4 +48,12 @@ Conversation memory is process-local and bounded, with no conversation checkpoin
 
 ## Distribution
 
-Weights and caches are excluded from the Git repository. Retain the base model's license and notices with any future authorized adapter distribution. The training dataset, source passages, embeddings, code and dependencies have separate licensing requirements. See SOURCE_REGISTER.md and DEPENDENCY_SECURITY.md before preparing a release.
+Weights and caches are excluded from the Git repository. Retain the base model's license and notices with adapter distribution. The training dataset, source passages, embeddings, code and dependencies have separate licensing requirements. See SOURCE_REGISTER.md and DEPENDENCY_SECURITY.md before preparing a release.
+
+## Download and run
+
+This repository contains the 17.1 MB LoRA adapter, not the 3.12 GB base weights. Use the exact base revision above. The raw adapter does not include the application safeguards or retrieval pipeline.
+
+Application source and setup: https://github.com/emrezorlu1239/mindful-support
+
+Follow docs/LOCAL_MODEL_SETUP.md in that repository for pinned downloads and local inference. No cloud inference endpoint is provided.
