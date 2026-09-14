@@ -27,3 +27,7 @@ For the interface and booking preview without GPU inference, install requirement
 The adapter is not a complete model. It depends on the pinned 3.12 GB base and the application pipeline. Raw adapter use does not reproduce input/output checks or reference retrieval. No clinical validation is claimed.
 
 Historical AI_DEVELOPMENT.md records earlier rejected experiments; do not follow its old training commands to reproduce the current selected release.
+
+## Latest local verification
+
+On 2026-09-14 the public-artifact preparation script completed without an API key. Two real local HTTP chat requests completed in 16.23 seconds combined: one returned a guarded fallback and one passed output validation. Session history and cleanup passed. See LOCAL_RELEASE_CHECK.json. This is an integration check, not a model quality score or a clean-machine installation test.
